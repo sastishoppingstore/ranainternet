@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rana Internet — Fiber WiFi in Lahore</title>
+<meta name="description" content="Rana Internet — fast fiber internet (FTTH) for homes and businesses in Lahore. Apply online for a new connection.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231d4ed8'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>R</text></svg>">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body>
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="logo">R</span>
+      <span><span data-i18n="brand">RANA INTERNET</span><small data-i18n="brand_sub">FIBER INTERNET • LAHORE</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="#packages" data-i18n="nav_packages">Packages</a>
+      <a href="#areas" data-i18n="nav_areas">Coverage</a>
+      <a href="#how" data-i18n="nav_how">How It Works</a>
+      <a href="#faq" data-i18n="nav_faq">FAQ</a>
+      <a href="/track" data-i18n="nav_track">Track</a>
+      <button class="lang-toggle" id="langToggle" title="اردو / English">اردو</button>
+      <a class="btn btn-primary btn-sm keep" href="/apply" data-i18n="nav_apply">Apply Now</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <h1><span data-i18n="hero_t1">Fiber Internet</span> <span data-i18n="hero_t2">for Every Home in Lahore</span></h1>
+      <p class="sub" data-i18n="hero_sub">Ultra-fast FTTH connection with 24/7 support, stable signal and transparent pricing. Naya connection aaj hi apply karein!</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="/apply" data-i18n="cta_apply">Apply for Connection</a>
+        <a class="btn btn-ghost" href="#packages" data-i18n="cta_view">View Packages</a>
+      </div>
+      <div class="hero-stats">
+        <div><b id="statPkg">4+</b><span data-i18n="stat_pkg">Speed Packages</span></div>
+        <div><b>24/7</b><span data-i18n="stat_support">Technical Support</span></div>
+        <div><b data-i18n="stat_inst">48 hrs</b><span data-i18n="stat_inst_sub">Installation</span></div>
+      </div>
+    </div>
+    <div class="hero-card">
+      <h3 data-i18n="card_speeds">Available Speeds</h3>
+      <div id="heroSpeeds"></div>
+    </div>
+  </div>
+</header>
+
+<section id="packages">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" data-i18n="pkg_kicker">Our Packages</div>
+      <h2 data-i18n="pkg_title">Choose Your Speed</h2>
+      <p class="sub2" data-i18n="pkg_sub">Har harjaat k liye — browsing se le kar gaming aur business tak.</p>
+    </div>
+    <div class="pkg-grid" id="pkgGrid"></div>
+  </div>
+</section>
+
+<section id="areas" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" data-i18n="area_kicker">Coverage</div>
+      <h2 data-i18n="area_title">Where We Serve</h2>
+      <p class="sub2" data-i18n="area_sub">Apna area select karein aur apply karein — baqi hum karein ge.</p>
+    </div>
+    <div class="area-grid" id="areaGrid"></div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" data-i18n="how_kicker">Simple Process</div>
+      <h2 data-i18n="how_title">How It Works</h2>
+      <p class="sub2" data-i18n="how_sub">Sirf 4 qadam — apply se le kar connection tak.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><div class="num">1</div><b data-i18n="s1_t">Apply Online</b><p data-i18n="s1_p">Fill the form with your CNIC, phone number and address. 2 minute ka kaam hai.</p></div>
+      <div class="step"><div class="num">2</div><b data-i18n="s2_t">Site Survey</b><p data-i18n="s2_p">Our team calls you and checks the route to your home for feasibility.</p></div>
+      <div class="step"><div class="num">3</div><b data-i18n="s3_t">Installation</b><p data-i18n="s3_p">Technician installs fiber, ONU/router and tests your speed — usually within 48 hours.</p></div>
+      <div class="step"><div class="num">4</div><b data-i18n="s4_t">Enjoy Internet</b><p data-i18n="s4_p">Connection active! Monthly bill on your chosen date. 24/7 support on WhatsApp.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;" id="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" data-i18n="why_kicker">Why Rana Internet</div>
+      <h2 data-i18n="why_title">Local. Reliable. Fast.</h2>
+    </div>
+    <div class="why-grid">
+      <div class="why"><div class="ic">⚡</div><b data-i18n="w1_t">True Fiber to Home</b><p data-i18n="w1_p">Real FTTH — no shared copper, no throttling. The speed you pay for is the speed you get.</p></div>
+      <div class="why"><div class="ic">🛠️</div><b data-i18n="w2_t">Fast Local Support</b><p data-i18n="w2_p">Call ya WhatsApp karein — hamari team aapke area mein hai. Tickets tracked till resolved.</p></div>
+      <div class="why"><div class="ic">💰</div><b data-i18n="w3_t">Transparent Billing</b><p data-i18n="w3_p">Clear monthly bill, paid via cash, JazzCash, Easypaisa, Raast QR or bank transfer.</p></div>
+      <div class="why"><div class="ic">📶</div><b data-i18n="w4_t">Stable Signal</b><p data-i18n="w4_p">Monitored network with quick fault detection — we know when a box or PON has issues.</p></div>
+      <div class="why"><div class="ic">🏠</div><b data-i18n="w5_t">Homes & Business</b><p data-i18n="w5_p">From 10 Mbps browsing to 50 Mbps business-grade plans with priority support.</p></div>
+      <div class="why"><div class="ic">🕐</div><b data-i18n="w6_t">24/7 Availability</b><p data-i18n="w6_p">Network aur support kabhi band nahi. Emergencies for 24 ghante available.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" data-i18n="faq_kicker">FAQ</div>
+      <h2 data-i18n="faq_title">Common Questions</h2>
+    </div>
+    <div class="faq">
+      <details><summary data-i18n="q1">Kya installation charges ka koi charge hai?</summary><p data-i18n="a1">Haan, package ke sath ek one-time installation fee hai (package page par dikhayi gayi hai). Yeh sirf ek baar hoti hai.</p></div>
+      <details><summary data-i18n="q2">Payment kaise karun?</summary><p data-i18n="a2">Cash, JazzCash, Easypaisa, Raast QR code, ya bank transfer — invoice number hamesha reference mein dein.</p></div>
+      <details><summary data-i18n="q3">Internet nahi aa raha, kya karun?</summary><p data-i18n="a3">Hamari helpline 042 par call karein ya WhatsApp par ticket bhejein. Hamari technical team jald azald aayegi.</p></div>
+      <details><summary data-i18n="q4">Kya main package badal sakta hoon?</summary><p data-i18n="a4">Haan, kisi bhi waqt. Upgrade next billing cycle se shuru hota hai, agar chahen to prorate adjustment bhi ho sakti hai.</p></div>
+      <details><summary data-i18n="q5">Kya contract ka koi period hai?</summary><p data-i18n="a5">Monthly plans par koi lamba contract nahi — aap chahein to next month se chhod sakte hain.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" style="background:#fff;">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="kicker" data-i18n="ct_kicker">Contact</div>
+      <h2 data-i18n="ct_title">Visit or Call Us</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <b data-i18n="ct_office">Main Office</b>
+        <div class="row"><span class="ic">📍</span><span id="cAddress">—</span></div>
+        <div class="row"><span class="ic">📞</span><span id="cPhone">—</span></div>
+        <div class="row"><span class="ic">💬</span><a id="cWhatsapp" href="#">—</a></div>
+        <div class="row"><span class="ic">✉️</span><span id="cEmail">—</span></div>
+      </div>
+      <div class="contact-card">
+        <b data-i18n="ct_hours">Office Hours</b>
+        <div class="row"><span class="ic">🕐</span><span id="cHours">—</span></div>
+        <div class="row"><span class="ic">🌐</span><a href="/apply" data-i18n="ct_apply_link">Apply online for a new connection</a></div>
+        <div class="row"><span class="ic">📋</span><a href="/track" data-i18n="ct_track_link">Track your application status</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <b>Rana Internet</b>
+        <p style="margin-top:8px; font-size:.9rem;" data-i18n="ft_about">Fiber internet service provider for homes and businesses in Lahore. Fast, stable and supported by a local team.</p>
+      </div>
+      <div>
+        <b data-i18n="ft_links">Quick Links</b>
+        <a href="/apply" data-i18n="ft_apply">Apply for Connection</a>
+        <a href="/track" data-i18n="ft_track">Track Application</a>
+        <a href="#packages" data-i18n="ft_pkg">Packages</a>
+      </div>
+      <div>
+        <b data-i18n="ft_contact">Contact</b>
+        <a href="#" id="ftPhone">—</a>
+        <a href="#" id="ftWhatsapp">—</a>
+      </div>
+    </div>
+    <div class="fine">
+      <span>© 2026 Rana Internet. All rights reserved.</span>
+      <span data-i18n="ft_tag">Fiber to Home • Lahore</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="/js/site.js"></script>
+</body>
+</html>

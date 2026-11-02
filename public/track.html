@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Track Application — Rana Internet</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231d4ed8'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>R</text></svg>">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="page">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="logo">R</span>
+      <span>RANA INTERNET<small>FIBER INTERNET • LAHORE</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="/" data-i18n="nav_home">Home</a>
+      <a href="/apply" data-i18n="nav_apply">Apply Now</a>
+      <button class="lang-toggle" id="langToggle">اردو</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1 data-i18n="tk_title">Track Your Application</h1>
+    <p data-i18n="tk_sub">Apna reference code aur mobile number daalein — status foran milega.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="form-wrap">
+    <div class="form-errors" id="tkErrors" style="display:none"></div>
+    <div class="grid-2">
+      <div class="field">
+        <label data-i18n="tk_ref">Reference Code</label>
+        <input type="text" id="tkRef" placeholder="e.g. APP-E6C423">
+      </div>
+      <div class="field">
+        <label data-i18n="tk_phone">Mobile Number</label>
+        <input type="tel" id="tkPhone" placeholder="03XX-XXXXXXX">
+      </div>
+    </div>
+    <button class="btn btn-primary" id="tkBtn" style="width:100%;" data-i18n="tk_check">Check Status</button>
+
+    <div class="track-result" id="tkResult">
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <span class="badge" id="tkBadge">—</span>
+        <b id="tkApplied" style="color:var(--muted); font-size:.9rem;"></b>
+      </div>
+      <p id="tkDetail" style="margin-top:12px; color:var(--ink);"></p>
+      <p style="margin-top:14px; color:var(--muted); font-size:.88rem;" id="tkHelp"></p>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fine" style="border:0;margin:0;padding:0;">
+      <span>© 2026 Rana Internet. All rights reserved.</span>
+      <span>Fiber to Home • Lahore</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="/js/site.js"></script>
+<script>
+  Object.assign(I18N.en, {
+    nav_home: 'Home', nav_apply: 'Apply Now',
+    tk_title: 'Track Your Application', tk_sub: 'Enter your reference code and mobile number to see live status.',
+    tk_ref: 'Reference Code', tk_phone: 'Mobile Number', tk_check: 'Check Status',
+    tk_help_new: 'Our team is reviewing your application. Expect a call within 24 hours.',
+    tk_help_surveyed: 'Site survey done. We will call to schedule your installation.',
+    tk_help_in_installation: 'A technician is assigned. We will call before installation.',
+    tk_help_completed: 'Installation is complete — activation in progress.',
+    tk_help_activated: 'Your connection is active. First bill arrives on your billing date.',
+    tk_help_rejected: 'Contact our office for details: 042-35712345.',
+  });
+  Object.assign(I18N.ur, {
+    nav_home: 'Home', nav_apply: 'Apply Karein',
+    tk_title: 'Apni Application Track Karein', tk_sub: 'Reference code aur mobile number daalein — status foran.',
+    tk_ref: 'Reference Code', tk_phone: 'Mobile Number', tk_check: 'Status Dekhein',
+    tk_help_new: 'Hamari team aapki application dekh rahi hai. 24 ghantay ke andar call aayegi.',
+    tk_help_surveyed: 'Survey mukammal. Installation ke liye call aayegi.',
+    tk_help_in_installation: 'Technician assign ho chuka hai. Installation se pehle call aayegi.',
+    tk_help_completed: 'Installation mukammal — activation ho rahi hai.',
+    tk_help_activated: 'Aapka connection active hai. Pehla bill aapki billing date par aayega.',
+    tk_help_rejected: ' tafseelat ke liye office se rabta karein: 042-35712345.',
+  });
+  applyI18n();
+
+  const q = new URLSearchParams(location.search);
+  if (q.get('ref')) document.getElementById('tkRef').value = q.get('ref');
+  if (q.get('phone')) document.getElementById('tkPhone').value = q.get('phone');
+
+  const HELP = { new: 'tk_help_new', surveyed: 'tk_help_surveyed', in_installation: 'tk_help_in_installation', completed: 'tk_help_completed', activated: 'tk_help_activated', rejected: 'tk_help_rejected' };
+
+  document.getElementById('tkBtn').addEventListener('click', async () => {
+    const ref = document.getElementById('tkRef').value.trim();
+    const phone = document.getElementById('tkPhone').value.trim();
+    const errs = document.getElementById('tkErrors');
+    errs.style.display = 'none';
+    if (!ref || !phone) {
+      errs.innerHTML = '<b>Reference code aur mobile number dono chahiye.</b>';
+      errs.style.display = 'block';
+      return;
+    }
+    try {
+      const r = await api(`/api/public/track/${encodeURIComponent(ref)}?phone=${encodeURIComponent(phone)}`);
+      const box = document.getElementById('tkResult');
+      box.style.display = 'block';
+      const badge = document.getElementById('tkBadge');
+      badge.textContent = r.label;
+      badge.className = 'badge ' + r.status;
+      document.getElementById('tkApplied').textContent = `Ref: ${r.ref} • ${r.appliedOn}`;
+      document.getElementById('tkDetail').textContent = r.detail;
+      document.getElementById('tkHelp').textContent = t(HELP[r.status] || 'tk_help_new');
+    } catch (e) {
+      errs.innerHTML = `<b>${e.error || 'Not found'}</b>`;
+      errs.style.display = 'block';
+      document.getElementById('tkResult').style.display = 'none';
+    }
+  });
+  if (q.get('ref') && q.get('phone')) document.getElementById('tkBtn').click();
+</script>
+</body>
+</html>
