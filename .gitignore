@@ -1,0 +1,15 @@
+# dependencies
+node_modules/
+
+# runtime data — SQLite DB, WAL, backups, uploaded files, dev secrets
+data/
+
+# logs
+*.log
+logs/
+
+# os / editor
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Apply for Connection — Rana Internet</title>
+<meta name="description" content="Apply online for a new Rana Internet fiber connection in Lahore.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%231d4ed8'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>R</text></svg>">
+<link rel="stylesheet" href="/css/site.css">
+</head>
+<body class="page">
+
+<nav class="nav">
+  <div class="wrap">
+    <a class="brand" href="/">
+      <span class="logo">R</span>
+      <span><span data-i18n="brand">RANA INTERNET</span><small data-i18n="brand_sub">FIBER INTERNET • LAHORE</small></span>
+    </a>
+    <div class="nav-links">
+      <a href="/" data-i18n="nav_home">Home</a>
+      <a href="/#packages" data-i18n="nav_packages">Packages</a>
+      <a href="/track" data-i18n="nav_track">Track</a>
+      <button class="lang-toggle" id="langToggle">اردو</button>
+    </div>
+  </div>
+</nav>
+
+<header class="page-head">
+  <div class="wrap">
+    <h1 data-i18n="ap_title">New Connection Application</h1>
+    <p data-i18n="ap_sub">Naya fiber connection mangwayen — 2 minute ka form, 24 ghantay ke andar call aayegi.</p>
+  </div>
+</header>
+
+<div class="wrap">
+  <div class="form-wrap" id="formWrap">
+    <form id="applyForm" novalidate>
+      <div class="form-errors" id="formErrors" style="display:none"></div>
+      <div class="grid-2">
+        <div class="field">
+          <label data-i18n="f_name">Full Name <small>*(Poora Naam)</small></label>
+          <input type="text" name="name" maxlength="80" placeholder="e.g. Ahmad Ali" required>
+        </div>
+        <div class="field">
+          <label data-i18n="f_father">Father / Guardian Name</label>
+          <input type="text" name="father_name" maxlength="80" placeholder="e.g. Muhammad Aslam">
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label data-i18n="f_cnic">CNIC Number <small>*</small></label>
+          <input type="text" name="cnic" inputmode="numeric" maxlength="17" placeholder="42101-1234567-1" required>
+          <div class="hint" data-i18n="f_cnic_h">13 digits — NADRA card number</div>
+        </div>
+        <div class="field">
+          <label data-i18n="f_phone">Mobile Number <small>*</small></label>
+          <input type="tel" name="phone" inputmode="tel" maxlength="14" placeholder="03XX-XXXXXXX" required>
+        </div>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label data-i18n="f_whatsapp">WhatsApp Number</label>
+          <input type="tel" name="whatsapp" inputmode="tel" maxlength="14" placeholder="same as mobile (default)">
+          <div class="hint" data-i18n="f_whatsapp_h">Updates aayengi is number par</div>
+        </div>
+        <div class="field">
+          <label data-i18n="f_area">Area / Mohalla <small>*</small></label>
+          <select name="area_id" id="areaSelect" required><option value="">— select area —</option></select>
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="f_address">Full Address <small>*</small></label>
+        <input type="text" name="address" maxlength="300" placeholder="House #, Street, Block, Mohalla" required>
+      </div>
+      <div class="grid-2">
+        <div class="field">
+          <label data-i18n="f_pkg">Requested Package</label>
+          <select name="package_id" id="pkgSelect"><option value="">— select package (optional) —</option></select>
+        </div>
+        <div class="field">
+          <label data-i18n="f_date">Preferred Installation Date</label>
+          <input type="date" name="preferred_date" id="prefDate">
+        </div>
+      </div>
+      <div class="field">
+        <label data-i18n="f_notes">Notes (optional)</label>
+        <textarea name="notes" rows="3" maxlength="500" placeholder="e.g. building parking, reference customer, etc."></textarea>
+      </div>
+      <button class="btn btn-primary" type="submit" id="submitBtn" style="width:100%;">
+        <span data-i18n="f_submit">Submit Application</span>
+      </button>
+      <p class="hint" style="text-align:center; margin-top:12px;" data-i18n="f_note">Submission par aap ko reference code milega — track page se status dekh sakte hain.</p>
+    </form>
+  </div>
+</div>
+
+<div class="wrap" style="margin-bottom:60px;">
+  <div class="form-wrap" id="successWrap" style="display:none;">
+    <div class="success-box">
+      <div class="ic">✅</div>
+      <h2 data-i18n="ok_title">Application Received!</h2>
+      <p data-i18n="ok_sub">Shukriya! Hamari team 24 ghantay ke andar aap se rabta karegi.</p>
+      <div class="ref" id="okRef">—</div>
+      <p style="max-width:420px;margin:0 auto 18px;" data-i18n="ok_keep">Is reference code ko yaad rakhein. Status check karne ke liye:</p>
+      <a class="btn btn-navy" id="okTrack" href="/track">Track Application</a>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="fine" style="border:0;margin:0;padding:0;">
+      <span>© 2026 Rana Internet. All rights reserved.</span>
+      <span>Fiber to Home • Lahore</span>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+<script src="/js/site.js"></script>
+<script>
+  // i18n extras for this page
+  Object.assign(I18N.en, {
+    nav_home: 'Home', ap_title: 'New Connection Application',
+    ap_sub: 'Apply online for a new fiber connection — form in 2 minutes, call within 24 hours.',
+    f_name: 'Full Name', f_father: 'Father / Guardian Name', f_cnic: 'CNIC Number',
+    f_cnic_h: '13 digits — NADRA card number', f_phone: 'Mobile Number',
+    f_whatsapp: 'WhatsApp Number', f_whatsapp_h: 'Updates will come on this number',
+    f_area: 'Area / Mohalla', f_address: 'Full Address', f_pkg: 'Requested Package',
+    f_date: 'Preferred Installation Date', f_notes: 'Notes (optional)', f_submit: 'Submit Application',
+    f_note: 'You will get a reference code after submission — check status on the track page.',
+    ok_title: 'Application Received!', ok_sub: 'Thank you! Our team will contact you within 24 hours.',
+    ok_keep: 'Keep this reference code. To check your status:',
+  });
+  Object.assign(I18N.ur, {
+    nav_home: 'Home', ap_title: 'Naye Connection Ki Application',
+    ap_sub: 'Online apply karein — form 2 minute ka, call 24 ghantay ke andar.',
+    f_name: 'Poora Naam', f_father: 'Wali / Baap Ka Naam', f_cnic: 'CNIC Number',
+    f_cnic_h: '13 digits — NADRA card number', f_phone: 'Mobile Number',
+    f_whatsapp: 'WhatsApp Number', f_whatsapp_h: 'Isi number par updates aayengi',
+    f_area: 'Area / Mohalla', f_address: 'Poora Pata', f_pkg: 'Manga Hua Package',
+    f_date: 'Pasand Ki Date (Installation)', f_notes: 'Maloomat (optional)', f_submit: 'Application Bhejein',
+    f_note: 'Bhejne ke baad reference code milega — track page se status dekhein.',
+    ok_title: 'Application Mil Gayi!', ok_sub: 'Shukriya! Hamari team 24 ghantay ke andar aap se rabta karegi.',
+    ok_keep: 'Yeh reference code yaad rakhein. Status ke liye:',
+  });
+  applyI18n();
+
+  (async function () {
+    const min = new Date(); min.setDate(min.getDate() + 1);
+    document.getElementById('prefDate').min = min.toISOString().slice(0, 10);
+    try {
+      const [areas, pkgs] = await Promise.all([api('/api/public/areas'), api('/api/public/packages')]);
+      const as = document.getElementById('areaSelect');
+      areas.forEach((a) => as.insertAdjacentHTML('beforeend', `<option value="${a.id}">${a.name}${a.zone ? ' — ' + a.zone : ''}</option>`));
+      const ps = document.getElementById('pkgSelect');
+      pkgs.forEach((p) => ps.insertAdjacentHTML('beforeend', `<option value="${p.id}">${p.name} — ${p.download}Mbps (${p.priceText})</option>`));
+      const q = new URLSearchParams(location.search);
+      if (q.get('package')) {
+        const match = pkgs.find((p) => p.name === q.get('package'));
+        if (match) ps.value = match.id;
+      }
+    } catch (e) { console.error(e); }
+  })();
+
+  const form = document.getElementById('applyForm');
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const errs = document.getElementById('formErrors');
+    errs.style.display = 'none';
+    const fd = new FormData(form);
+    const body = Object.fromEntries(fd.entries());
+    const btn = document.getElementById('submitBtn');
+    btn.disabled = true; btn.querySelector('span').textContent = '…';
+    try {
+      const res = await api('/api/public/application', { method: 'POST', body });
+      document.getElementById('formWrap').style.display = 'none';
+      const sw = document.getElementById('successWrap');
+      sw.style.display = 'block';
+      document.getElementById('okRef').textContent = res.ref;
+      const track = document.getElementById('okTrack');
+      const phone = String(body.phone || '').replace(/[^\d]/g, '');
+      track.href = `/track?ref=${encodeURIComponent(res.ref)}&phone=${phone}`;
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } catch (err) {
+      const el = document.createElement('div');
+      el.className = 'form-errors';
+      el.style.display = 'block';
+      let html = `<b>${err.error || 'Something went wrong'}</b>`;
+      if (err.errors && err.errors.length) html += `<ul>${err.errors.map((x) => `<li>${x}</li>`).join('')}</ul>`;
+      if (err.message) html += `<p>${err.message}</p>`;
+      el.innerHTML = html;
+      form.prepend(el);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } finally {
+      btn.disabled = false; btn.querySelector('span').textContent = t('f_submit');
+    }
+  });
+</script>
+</body>
+</html>

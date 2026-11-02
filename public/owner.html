@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner Panel — Rana Internet</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230b1f3f'/><text x='50' y='68' font-size='52' text-anchor='middle' fill='white' font-family='Arial' font-weight='bold'>R</text></svg>">
+<link rel="stylesheet" href="/css/owner.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="loginView" class="login-wrap">
+  <div class="login-card">
+    <div class="login-brand"><span class="logo">R</span></div>
+    <h1>Rana Internet</h1>
+    <p class="login-sub">Owner / Super Admin Panel</p>
+    <div class="field" id="loginErrors" style="display:none"></div>
+    <div class="field">
+      <label>Email</label>
+      <input type="email" id="loginEmail" autocomplete="username" placeholder="owner@ranainternet.pk">
+    </div>
+    <div class="field">
+      <label>Password</label>
+      <input type="password" id="loginPassword" autocomplete="current-password" placeholder="••••••••">
+    </div>
+    <div class="field" id="login2faField" style="display:none">
+      <label>2FA Code</label>
+      <input type="text" id="login2fa" inputmode="numeric" maxlength="6" placeholder="6-digit code">
+    </div>
+    <button class="btn btn-primary" id="loginBtn" style="width:100%;">Sign In</button>
+    <p class="login-foot">Authorized access only. All activity is audited.</p>
+  </div>
+</div>
+
+<!-- ============ APP SHELL ============ -->
+<div id="appView" style="display:none;">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-brand"><span class="logo">R</span><div><b>Rana Internet</b><small>Owner Panel</small></div></div>
+    <nav id="sideNav"></nav>
+    <div class="side-foot">
+      <div id="demoBanner" class="demo-banner" style="display:none;">DEMO DATA</div>
+      <div class="side-user"><b id="sideUser">—</b><small>Owner / Super Admin</small></div>
+      <button class="btn btn-outline btn-sm" id="logoutBtn" style="width:100%;">Logout</button>
+    </div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <button class="icon-btn" id="menuBtn">☰</button>
+      <div class="global-search">
+        <input type="search" id="globalSearch" placeholder="Search customer, phone, CNIC, invoice, ONU, PPPoE…">
+        <div class="search-drop" id="searchDrop" style="display:none;"></div>
+      </div>
+      <div class="top-actions">
+        <a class="icon-btn" href="/" title="Customer website" target="_blank">🌐</a>
+        <div class="avatar" id="avatar">O</div>
+      </div>
+    </header>
+    <main class="content" id="content"></main>
+  </div>
+</div>
+
+<div class="toast-zone" id="toastZone"></div>
+<div class="modal-zone" id="modalZone"></div>
+
+<script src="/js/owner-ui.js"></script>
+<script src="/js/owner-views-dash.js"></script>
+<script src="/js/owner-views-customers.js"></script>
+<script src="/js/owner-views-billing.js"></script>
+<script src="/js/owner-views-network.js"></script>
+<script src="/js/owner-views-ops.js"></script>
+<script src="/js/owner-views-finance.js"></script>
+<script src="/js/owner-views-devices.js"></script>
+<script src="/js/owner.js"></script>
+</body>
+</html>
